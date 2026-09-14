@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jimmy Majumder — Robotics Engineer, Researcher &amp; Innovation Strategist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ---------- Base & Variables ---------- */
+:root {
+  --bg: #06080f;
+  --bg-alt: #0a0e1a;
+  --surface: #10141f;
+  --surface-2: #151a28;
+  --border: #232a3d;
+  --text: #e9edf7;
+  --text-dim: #9aa4bd;
+  --text-faint: #6b7590;
+  --accent: #5eead4;
+  --accent-2: #818cf8;
+  --accent-3: #f472b6;
+  --gradient: linear-gradient(120deg, #5eead4 0%, #818cf8 50%, #f472b6 100%);
+  --radius: 16px;
+  --max-width: 1120px;
+  --shadow: 0 20px 60px -20px rgba(0,0,0,0.6);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .logo {
+  font-family: 'Sora', sans-serif;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+p { margin: 0 0 1rem; color: var(--text-dim); }
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.text-gradient {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Progress bar ---------- */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--gradient);
+  z-index: 1000;
+  transition: width 0.1s ease-out;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 900;
+  padding: 18px 0;
+  background: rgba(6,8,15,0);
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s ease, border-color 0.3s ease, padding 0.3s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(6,8,15,0.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.logo-dot { color: var(--accent); }
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  transition: color 0.2s ease;
+}
+.nav a:hover { color: var(--text); }
+
+.nav-cta {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text) !important;
+}
+.nav-cta:hover { border-color: var(--accent); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-toggle span {
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 100px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+}
+.orb-1 {
+  width: 480px; height: 480px;
+  background: var(--accent-2);
+  top: -120px; right: -80px;
+}
+.orb-2 {
+  width: 380px; height: 380px;
+  background: var(--accent);
+  bottom: -100px; left: -80px;
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 30%, black 40%, transparent 100%);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 18px;
+}
+
+.hero-role {
+  font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+  font-weight: 600;
+  color: var(--text);
+  min-height: 2.2em;
+  margin-bottom: 20px;
+}
+.hero-role::after {
+  content: '|';
+  color: var(--accent);
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.hero-lede {
+  font-size: 1.05rem;
+  max-width: 620px;
+  margin-bottom: 34px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary {
+  background: var(--gradient);
+  color: #06080f;
+  box-shadow: 0 10px 30px -8px rgba(94,234,212,0.4);
+}
+.btn-primary:hover { box-shadow: 0 14px 36px -8px rgba(94,234,212,0.55); }
+
+.btn-ghost {
+  background: rgba(255,255,255,0.03);
+  border-color: var(--border);
+  color: var(--text);
+}
+.btn-ghost:hover { border-color: var(--accent); }
+
+.hero-avatar {
+  position: absolute;
+  right: 24px;
+  top: 110px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #06080f;
+  box-shadow: var(--shadow);
+}
+.hero-avatar::before {
+  content: '';
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255,255,255,0.25);
+  animation: spin 30s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.scroll-cue {
+  position: absolute;
+  bottom: 34px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 42px;
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  z-index: 1;
+}
+.scroll-cue span {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--accent);
+  animation: scrollcue 1.6s ease infinite;
+}
+@keyframes scrollcue {
+  0% { opacity: 1; top: 8px; }
+  100% { opacity: 0; top: 22px; }
+}
+
+/* ---------- Stats ---------- */
+.stats-strip {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-alt);
+  padding: 48px 0;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  text-align: center;
+}
+.stat { display: flex; flex-direction: column; align-items: center; }
+.stat-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--text);
+}
+.stat-suffix {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-left: 2px;
+}
+.stat p {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+/* ---------- Sections ---------- */
+.section { padding: 110px 0; }
+.section-alt { background: var(--bg-alt); }
+
+.section-tag {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  font-weight: 800;
+  max-width: 720px;
+  margin-bottom: 48px;
+}
+
+/* About */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.about-text p { font-size: 1.02rem; }
+.about-actions {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+.link-arrow {
+  color: var(--accent);
+  font-weight: 600;
+  transition: gap 0.2s ease, opacity 0.2s ease;
+}
+.link-arrow:hover { opacity: 0.8; }
+
+.about-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+.about-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+.fact-list {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.fact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.92rem;
+  color: var(--text-dim);
+}
+.fact-list span { font-size: 1.1rem; }
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+  border-left: 2px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.timeline-item { position: relative; }
+.timeline-dot {
+  position: absolute;
+  left: -40px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gradient);
+  box-shadow: 0 0 0 4px var(--bg-alt), 0 0 0 5px var(--border);
+}
+.timeline-date {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+.timeline-content h3 {
+  font-size: 1.15rem;
+  margin: 8px 0 8px;
+}
+.timeline-content p { margin: 0; max-width: 640px; }
+
+/* Cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+.feature-icon { font-size: 1.8rem; margin-bottom: 14px; }
+.feature-card h3 { font-size: 1.05rem; margin-bottom: 10px; }
+.feature-card p { font-size: 0.92rem; margin: 0; }
+
+.research-cta { margin-top: 40px; }
+
+/* Affiliations chips */
+.chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.chip {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.chip:hover { border-color: var(--accent); color: var(--text); }
+
+/* Contact */
+.contact-section { text-align: center; }
+.contact-inner { display: flex; flex-direction: column; align-items: center; }
+.contact-lede { max-width: 560px; font-size: 1.05rem; }
+.contact-actions { margin: 12px 0 28px; }
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+}
+.contact-links a {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.contact-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+  background: var(--bg-alt);
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+.footer-inner p { margin: 0; }
+
+/* ---------- Reveal animation ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  .about-grid { grid-template-columns: 1fr; }
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-avatar { display: none; }
+}
+
+@media (max-width: 720px) {
+  .nav {
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    background: rgba(6,8,15,0.97);
+    backdrop-filter: blur(14px);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+    transform: translateY(-140%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .nav.open { transform: translateY(0); opacity: 1; }
+  .nav-toggle { display: flex; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .cards-grid { grid-template-columns: 1fr; }
+  .timeline { padding-left: 24px; }
+  .timeline-dot { left: -32px; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#home" class="logo">JM<span class="logo-dot">.</span></a>
+    <nav class="nav" id="nav">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#research">Research</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#affiliations">Affiliations</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="container hero-inner">
+      <p class="eyebrow reveal">Ex-NASA/IASC · Ex-UNDP · MEXT Scholar, Japan</p>
+      <h1 class="reveal">
+        Jimmy <span class="text-gradient">Majumder</span>
+      </h1>
+      <p class="hero-role reveal" id="typewriter"></p>
+      <p class="hero-lede reveal">
+        Robotics engineer and researcher building autonomous systems, AI-driven automation,
+        and computer vision solutions — bridging academic research with real-world
+        industry deployment across Japan, Bangladesh, and beyond.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="https://www.slideshare.net/jimmymajumder1/curriculum-vitae-of-jimmy-majumder/jimmymajumder1/curriculum-vitae-of-jimmy-majumder" target="_blank" rel="noopener" class="btn btn-primary">Download CV</a>
+        <a href="https://www.slideshare.net/jimmymajumder1/engineering-project-profile" target="_blank" rel="noopener" class="btn btn-ghost">View Research Portfolio</a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+      <div class="hero-avatar reveal" aria-hidden="true">
+        <span>JM</span>
+      </div>
+    </div>
+    <a href="#about" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-strip">
+    <div class="container stats-grid">
+      <div class="stat reveal"><span class="stat-num" data-count="8">0</span><span class="stat-suffix">+</span><p>Years Experience</p></div>
+      <div class="stat reveal"><span class="stat-num" data-count="45">0</span><span class="stat-suffix">+</span><p>Robotics &amp; Autonomous Projects</p></div>
+      <div class="stat reveal"><span class="stat-num" data-count="25">0</span><span class="stat-suffix">+</span><p>Honors &amp; Awards</p></div>
+      <div class="stat reveal"><span class="stat-num" data-count="10">0</span><span class="stat-suffix">K+</span><p>Students Trained</p></div>
+      <div class="stat reveal"><span class="stat-num" data-count="5">0</span><span class="stat-suffix">K+</span><p>Community Members Led</p></div>
+      <div class="stat reveal"><span class="stat-num" data-count="35">0</span><span class="stat-suffix">+</span><p>Media Features</p></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <p class="section-tag reveal">About</p>
+      <h2 class="section-title reveal">Engineering the future, one autonomous system at a time.</h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm Jimmy Majumder, a Bangladeshi robotics engineer and researcher currently based in Japan.
+            I completed my undergraduate degree in Mechatronics Engineering at the World University of
+            Bangladesh, earning the <strong>Best Thesis Award (2018)</strong>. In 2020, I was awarded the
+            prestigious <strong>MEXT Scholarship</strong> by the Government of Japan to pursue graduate
+            research in the Global Advanced Assistive Robotics (GAAR) program at Shibata Laboratory,
+            Kyushu Institute of Technology (Kyutech).
+          </p>
+          <p>
+            I completed my master's in robotics in 2022, receiving the <strong>Excellent Thesis
+            Presentation Award</strong> and a special honor from the Kyutech president for outstanding
+            contribution. I now work as a <strong>Robotics Engineer at QibiTech Inc.</strong>, a leading
+            robotics startup in Tokyo, collaborating with organizations such as <strong>NEDO</strong>,
+            <strong>Kawasaki Heavy Industries</strong>, and <strong>Sonai Corporation</strong>.
+          </p>
+          <p>
+            Beyond engineering, I've spent more than eight years across corporate and voluntary sectors —
+            working with <strong>UNDP</strong> on SDG youth leadership, supporting <strong>NASA/IASC</strong>
+            on human-machine interaction and space robotics research, and founding the
+            <strong>Bangladesh Advance Robotics Research Center (BARRC)</strong> in 2014, which has since
+            grown into a multinational robotics organization.
+          </p>
+          <p>
+            My work sits at the intersection of AI, machine learning, computer vision, and autonomous
+            systems — with a mission to translate frontier robotics research into practical, deployable
+            technology while mentoring the next generation of engineers.
+          </p>
+          <div class="about-actions">
+            <a href="mailto:eng.jimmy.majumder@gmail.com" class="link-arrow">Email me →</a>
+            <a href="https://barrc-bd.com/" target="_blank" rel="noopener" class="link-arrow">Visit BARRC →</a>
+          </div>
+        </div>
+        <div class="about-card reveal">
+          <h3>Quick Facts</h3>
+          <ul class="fact-list">
+            <li><span>🎓</span> MEXT Scholar — Kyutech, Japan</li>
+            <li><span>🤖</span> Robotics Engineer — QibiTech Inc., Tokyo</li>
+            <li><span>🚀</span> Ex-NASA/IASC Research Assistant</li>
+            <li><span>🌍</span> Ex-UNDP SDG Young Leader</li>
+            <li><span>🏛️</span> Founder — BARRC (est. 2014)</li>
+            <li><span>💡</span> Venture &amp; Innovation Strategist — Google for Startups, Japan</li>
+            <li><span>🇧🇩</span> Nationality — Bangladeshi</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE TIMELINE -->
+  <section class="section section-alt" id="experience">
+    <div class="container">
+      <p class="section-tag reveal">Career Journey</p>
+      <h2 class="section-title reveal">Experience &amp; Education</h2>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2023 — Present</span>
+            <h3>Robotics Engineer, QibiTech Inc.</h3>
+            <p>Tokyo, Japan. Developing autonomous robotics solutions in collaboration with NEDO, Kawasaki Heavy Industries, and Sonai Corporation.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2023 — Present</span>
+            <h3>Venture &amp; Innovation Strategist, Google for Startups</h3>
+            <p>Japan. Supporting startup growth strategy and innovation ecosystems.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2020 — 2022</span>
+            <h3>MEXT Scholar &amp; Graduate Researcher</h3>
+            <p>Global Advanced Assistive Robotics (GAAR) Program, Dept. of Human Intelligence Systems, Shibata Laboratory, Kyushu Institute of Technology (Kyutech). Awarded Excellent Thesis Presentation Award (2022) and Kyutech President's special honor.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2018 — 2020</span>
+            <h3>Research Assistant, NASA / IASC</h3>
+            <p>HMI Project &amp; Space Robotics Program — personal research assistant in science.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2018 — 2020</span>
+            <h3>Young Leader Applicant, UNDP SDG Project</h3>
+            <p>Contributed to Sustainable Development Goals youth leadership initiatives.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2018</span>
+            <h3>B.Eng. in Mechatronics Engineering</h3>
+            <p>World University of Bangladesh (WUB), Dhaka. Best Thesis Award, 2018-Fall.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2014</span>
+            <h3>Founder, Bangladesh Advance Robotics Research Center (BARRC)</h3>
+            <p>Established the first non-profit robotics organization in Bangladesh — now a multinational robotics Inc.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="section" id="research">
+    <div class="container">
+      <p class="section-tag reveal">Research Interests</p>
+      <h2 class="section-title reveal">Where I focus my work</h2>
+      <div class="cards-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">🧠</div>
+          <h3>Artificial Intelligence &amp; ML</h3>
+          <p>Applying AI/ML techniques to perception, decision-making, and adaptive control in robotic systems.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">👁️</div>
+          <h3>Computer Vision</h3>
+          <p>Vision-based sensing and scene understanding for autonomous navigation and manipulation.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🦾</div>
+          <h3>Assistive &amp; Advanced Robotics</h3>
+          <p>Human-centered assistive robotics research from the Global Advanced Assistive Robotics (GAAR) program at Kyutech.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🚗</div>
+          <h3>Autonomous Systems</h3>
+          <p>Design and deployment of autonomous robotics platforms for industrial and research applications.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🛰️</div>
+          <h3>Space &amp; HMI Robotics</h3>
+          <p>Human-machine interaction and space robotics research contributed through NASA/IASC collaboration.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🚀</div>
+          <h3>Innovation &amp; Venture Strategy</h3>
+          <p>Advising and mentoring startups on venture strategy and technology commercialization.</p>
+        </div>
+      </div>
+      <div class="research-cta reveal">
+        <a href="https://www.slideshare.net/jimmymajumder1/engineering-project-profile" target="_blank" rel="noopener" class="link-arrow">Explore 45+ engineering &amp; robotics projects →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="section section-alt" id="achievements">
+    <div class="container">
+      <p class="section-tag reveal">Recognition</p>
+      <h2 class="section-title reveal">Achievements &amp; Impact</h2>
+      <div class="cards-grid">
+        <div class="feature-card reveal">
+          <h3>25+ Honors &amp; Awards</h3>
+          <p>Including Best Thesis Award (2018) and Excellent Thesis Presentation Award (2022), Kyutech.</p>
+        </div>
+        <div class="feature-card reveal">
+          <h3>45+ Robotics Projects</h3>
+          <p>Designed and developed autonomous and robotics systems from concept to deployment.</p>
+        </div>
+        <div class="feature-card reveal">
+          <h3>30+ Speaking Engagements</h3>
+          <p>Delivered live sessions reaching 10,000+ students in person and over 1 million remotely.</p>
+        </div>
+        <div class="feature-card reveal">
+          <h3>5,000+ Community Members</h3>
+          <p>Leads youth robotics activities across four South Asian countries annually via BARRC.</p>
+        </div>
+        <div class="feature-card reveal">
+          <h3>35+ Media Features</h3>
+          <p>Journals, publications, conference acceptances, and media coverage on AI &amp; robotics leadership.</p>
+        </div>
+        <div class="feature-card reveal">
+          <h3>Multinational Impact</h3>
+          <p>Grew BARRC from a single non-profit initiative (2014) into a multinational robotics organization.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AFFILIATIONS -->
+  <section class="section" id="affiliations">
+    <div class="container">
+      <p class="section-tag reveal">Affiliations &amp; Memberships</p>
+      <h2 class="section-title reveal">Organizations I work with</h2>
+      <div class="chip-grid reveal">
+        <span class="chip">Robotics Society of Japan (RSJ)</span>
+        <span class="chip">Japan Society of Mechanical Engineers (JSME)</span>
+        <span class="chip">Innovation Forum UK — Bangladesh (IF Bangladesh)</span>
+        <span class="chip">Startup Bangladesh — ICT Division, Govt. of Bangladesh</span>
+        <span class="chip">Bangladesh Science Society (BSS)</span>
+        <span class="chip">NASA / IASC</span>
+        <span class="chip">UNDP</span>
+        <span class="chip">Kyushu Institute of Technology (Kyutech)</span>
+        <span class="chip">Google for Startups, Japan</span>
+        <span class="chip">World University of Bangladesh (WUB)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact-section" id="contact">
+    <div class="container contact-inner">
+      <p class="section-tag reveal">Get in Touch</p>
+      <h2 class="section-title reveal">Let's build something ambitious together.</h2>
+      <p class="reveal contact-lede">
+        Open for consultation, collaboration, and innovative robotics solutions — in AI-driven
+        automation, autonomous systems, and advanced robotics technologies.
+      </p>
+      <div class="contact-actions reveal">
+        <a href="mailto:eng.jimmy.majumder@gmail.com" class="btn btn-primary">eng.jimmy.majumder@gmail.com</a>
+      </div>
+      <div class="contact-links reveal">
+        <a href="https://barrc-bd.com/" target="_blank" rel="noopener">BARRC Website</a>
+        <a href="https://www.slideshare.net/jimmymajumder1/curriculum-vitae-of-jimmy-majumder/jimmymajumder1/curriculum-vitae-of-jimmy-majumder" target="_blank" rel="noopener">CV / Resume</a>
+        <a href="https://www.slideshare.net/jimmymajumder1/engineering-project-profile" target="_blank" rel="noopener">Project Portfolio</a>
+        <a href="https://sites.google.com/view/jimmy-majumder/" target="_blank" rel="noopener">Original Profile</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Jimmy Majumder. All rights reserved.</p>
+    <p class="footer-note">Robotics Engineer · Researcher · Innovation Strategist</p>
+  </div>
+</footer>
+
+<script>
+// ---------- Year ----------
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// ---------- Scroll progress bar ----------
+const progressBar = document.getElementById('progressBar');
+function updateProgress() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = pct + '%';
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+updateProgress();
+
+// ---------- Header scrolled state ----------
+const header = document.getElementById('siteHeader');
+function updateHeader() {
+  header.classList.toggle('scrolled', window.scrollY > 20);
+}
+window.addEventListener('scroll', updateHeader, { passive: true });
+updateHeader();
+
+// ---------- Mobile nav toggle ----------
+const navToggle = document.getElementById('navToggle');
+const nav = document.getElementById('nav');
+navToggle.addEventListener('click', () => {
+  nav.classList.toggle('open');
+});
+nav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => nav.classList.remove('open'));
+});
+
+// ---------- Reveal on scroll ----------
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// ---------- Typewriter effect ----------
+const roles = [
+  'Robotics Engineer, QibiTech Inc., Japan',
+  'MEXT Scholar & Graduate Researcher, Kyutech',
+  'Founder, Bangladesh Advance Robotics Research Center',
+  'Venture & Innovation Strategist, Google for Startups',
+  'AI · Computer Vision · Autonomous Systems'
+];
+const typeEl = document.getElementById('typewriter');
+let roleIndex = 0, charIndex = 0, deleting = false;
+
+function typeLoop() {
+  const current = roles[roleIndex];
+  if (!deleting) {
+    charIndex++;
+    typeEl.textContent = current.slice(0, charIndex);
+    if (charIndex === current.length) {
+      deleting = true;
+      setTimeout(typeLoop, 1600);
+      return;
+    }
+  } else {
+    charIndex--;
+    typeEl.textContent = current.slice(0, charIndex);
+    if (charIndex === 0) {
+      deleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+    }
+  }
+  setTimeout(typeLoop, deleting ? 35 : 55);
+}
+typeLoop();
+
+// ---------- Animated stat counters ----------
+const statNums = document.querySelectorAll('.stat-num');
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCount(entry.target);
+      statObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.4 });
+statNums.forEach(el => statObserver.observe(el));
+
+function animateCount(el) {
+  const target = parseInt(el.getAttribute('data-count'), 10);
+  const duration = 1200;
+  const start = performance.now();
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(eased * target);
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+</script>
+</body>
+</html>
