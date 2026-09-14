@@ -280,7 +280,7 @@ img { max-width: 100%; display: block; }
   border-color: var(--accent);
 }
 
-.hero-infocard {
+.robotics-card {
   width: 100%;
   max-width: 340px;
   margin: 8px 0 32px;
@@ -289,7 +289,7 @@ img { max-width: 100%; display: block; }
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
 }
-.hero-infocard img {
+.robotics-card img {
   width: 100%;
   display: block;
 }
