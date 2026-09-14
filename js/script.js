@@ -44,7 +44,7 @@ revealEls.forEach(el => revealObserver.observe(el));
 
 // ---------- Typewriter effect ----------
 const roles = [
-  'Sr. Robotics Engineer II, QibiTech Inc., Japan',
+  'Sr. Robotics Engineer III, QibiTech Inc., Japan',
   'MEXT Scholar & Graduate Researcher, Kyutech',
   'Founder & President, Bangladesh Advance Robotics Research Center',
   'Venture & Innovation Strategist, Google for Startups',
