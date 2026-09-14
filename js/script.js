@@ -44,11 +44,11 @@ revealEls.forEach(el => revealObserver.observe(el));
 
 // ---------- Typewriter effect ----------
 const roles = [
-  'Robotics Engineer, QibiTech Inc., Japan',
+  'Sr. Robotics Engineer II, QibiTech Inc., Japan',
   'MEXT Scholar & Graduate Researcher, Kyutech',
-  'Founder, Bangladesh Advance Robotics Research Center',
+  'Founder & President, Bangladesh Advance Robotics Research Center',
   'Venture & Innovation Strategist, Google for Startups',
-  'AI · Computer Vision · Autonomous Systems'
+  '13 Publications · AI · Computer Vision · Autonomous Systems'
 ];
 const typeEl = document.getElementById('typewriter');
 let roleIndex = 0, charIndex = 0, deleting = false;

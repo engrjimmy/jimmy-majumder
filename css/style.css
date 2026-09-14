@@ -320,7 +320,7 @@ img { max-width: 100%; display: block; }
 }
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 20px;
   text-align: center;
 }
@@ -465,6 +465,76 @@ img { max-width: 100%; display: block; }
 
 .research-cta { margin-top: 40px; }
 
+/* Publications list */
+.pub-list {
+  list-style: none;
+  counter-reset: pub;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.pub-list li {
+  counter-increment: pub;
+  position: relative;
+  padding-left: 44px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+}
+.pub-list li:last-child { border-bottom: none; }
+.pub-list li::before {
+  content: counter(pub);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pub-title {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0 0 6px;
+}
+.pub-meta {
+  color: var(--text-faint);
+  font-size: 0.88rem;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Skills grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+.skill-card h3 {
+  font-size: 1rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.skill-card p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
 /* Affiliations chips */
 .chip-grid {
   display: flex;
@@ -533,6 +603,7 @@ img { max-width: 100%; display: block; }
   .stats-grid { grid-template-columns: repeat(3, 1fr); }
   .about-grid { grid-template-columns: 1fr; }
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-avatar { display: none; }
 }
 
@@ -555,6 +626,7 @@ img { max-width: 100%; display: block; }
   .nav-toggle { display: flex; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .cards-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
   .timeline { padding-left: 24px; }
   .timeline-dot { left: -32px; }
 }
