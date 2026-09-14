@@ -258,44 +258,10 @@ img { max-width: 100%; display: block; }
 }
 .btn-ghost:hover { border-color: var(--accent); }
 
-.hero-avatar {
-  position: absolute;
-  right: 24px;
-  top: 110px;
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  padding: 4px;
-  background: var(--gradient);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow);
-}
-.hero-avatar img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  border: 3px solid var(--bg);
-}
-.hero-avatar::before {
-  content: '';
-  position: absolute;
-  inset: -14px;
-  border-radius: 50%;
-  border: 1px dashed rgba(15,23,42,0.18);
-  animation: spin 30s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-
 .hero-social {
-  position: absolute;
-  right: 24px;
-  top: 340px;
   display: flex;
   gap: 12px;
+  margin-top: 24px;
 }
 .hero-social a {
   font-family: 'Sora', sans-serif;
@@ -315,10 +281,9 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-infocard {
-  position: absolute;
-  right: 24px;
-  top: 396px;
-  width: 230px;
+  width: 100%;
+  max-width: 340px;
+  margin: 8px 0 32px;
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
@@ -795,7 +760,6 @@ img { max-width: 100%; display: block; }
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
   .projects-grid { grid-template-columns: repeat(2, 1fr); }
-  .hero-avatar, .hero-social, .hero-infocard { display: none; }
 }
 
 @media (max-width: 720px) {
