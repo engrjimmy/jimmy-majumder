@@ -625,6 +625,68 @@ img { max-width: 100%; display: block; }
   margin: 0;
 }
 
+/* Simple list (Research Interest, Certificates, Academics) */
+.simple-list {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 720px;
+}
+.simple-list li {
+  position: relative;
+  padding-left: 24px;
+  font-size: 1rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.simple-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gradient);
+}
+.simple-list li strong { color: var(--text); }
+
+/* Professional experience table */
+.exp-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.exp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+.exp-table th, .exp-table td {
+  text-align: left;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.exp-table thead th {
+  color: var(--accent);
+  font-family: 'Sora', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--surface);
+}
+.exp-table td { color: var(--text-dim); }
+.exp-table td:first-child, .exp-table td:nth-child(2) {
+  color: var(--text);
+  white-space: normal;
+}
+.exp-table tbody tr:last-child td { border-bottom: none; }
+.exp-table tbody tr:hover td { background: rgba(94,234,212,0.04); }
+
 /* Skills grid */
 .skills-grid {
   display: grid;
